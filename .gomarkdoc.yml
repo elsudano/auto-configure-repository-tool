@@ -1,0 +1,7 @@
+output: "{{.Dir}}/README.md"
+embed: yes
+verbose: 2
+# repository:
+#   url: https://github.com/princjef/gomarkdoc
+#   defaultBranch: master
+#   path: /
