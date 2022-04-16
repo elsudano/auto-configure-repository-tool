@@ -6,7 +6,7 @@
 # auto\-configure\-repository\-tool
 
 ```go
-import "."
+import "auto-configure-repository-tool"
 ```
 
 ## Index
