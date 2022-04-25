@@ -1,11 +1,8 @@
 package acrt
 
-import {
-	"fmt"
-	"github.com/xanzy/go-gitlab"
-}
+const A = "esto es una pena"
 
-func ReadRepo(imput string) (output string) {
-	output = imput + A
+func ReadRepo(input string) (output string) {
+	output = input + A
 	return
 }
