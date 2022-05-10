@@ -2,7 +2,6 @@ package main
 
 import (
 	"auto-configure-repository-tool/acrt"
-	"context"
 	"flag"
 	"fmt"
 	"log"
@@ -13,20 +12,15 @@ func main() {
 	repo := flag.String("repo", "", "You need put the URL to the repo that you want to read")
 	flag.Parse()
 
-	if *token != "" {
+	if *repo != "" {
 		fmt.Printf(*token + "\n")
 		fmt.Printf(*repo + "\n")
-		context := context.Background()
-		client := acrt.NewClient(*token, context)
-		// list all repositories for the authenticated user
-		repos, resp, err := client.Repositories.List(context, "", nil)
+		client, err := acrt.NewClient()
 		if err != nil {
-			fmt.Printf("\nerror: %v\n", err)
-			return
+			log.Printf("[ACRT] Fi: main.go Fu: main Obj:GitHub Client %#v\n", client.Client)
 		}
-		fmt.Printf("Repos: %#v", repos)
-		// Rate.Limit should most likely be 5000 when authorized.
-		log.Printf("Rate: %#v\n", resp.Rate)
+		client.Debug = true
+		client.ShowRepo(client.ShowLogin(), *repo)
 	} else {
 		flag.Usage()
 	}
